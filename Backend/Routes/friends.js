@@ -27,3 +27,10 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+// Listar amigos del usuario
+router.get('/', (req, res) => {
+    const { email: userEmail } = req.user;
+    const userFriends = friends.filter(friend => friend.userId === userEmail);
+    res.status(200).json(userFriends);
+});
