@@ -28,3 +28,17 @@ router.get('/', (req, res) => {
     const userPresents = presents.filter(present => present.userId === email);
     res.status(200).json(userPresents);
 });
+
+// Eliminar regalo
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    const { email } = req.user;
+    
+    const presentIndex = presents.findIndex(present => present.id === parseInt(id) && present.userId === email);
+    if (presentIndex === -1) {
+        return res.status(404).json({ message: 'Regalo no encontrado o no pertenece al usuario' });
+    }
+    
+    presents.splice(presentIndex, 1);
+    res.status(200).json({ message: 'Regalo eliminado exitosamente' });
+});

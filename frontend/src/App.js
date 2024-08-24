@@ -1,6 +1,6 @@
 import './App.css';
 
-function App() {
+let App() {
   return (
     <div className="App">
       <h1>Gift List App</h1>
