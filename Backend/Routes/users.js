@@ -48,3 +48,15 @@ router.post('/login', (req, res) => {
     const token = jwt.sign({ email: user.email, nombre: user.nombre }, 'secret_key');
     res.status(200).json({ token });
 });
+
+// Array temporal para almacenar tokens activos (normalmente se usaría una base de datos)
+let activeTokens = [];
+
+// Desconectar usuario
+router.post('/disconnect', (req, res) => {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    
+    // Eliminar el token de la lista de tokens activos
+    activeTokens = activeTokens.filter(t => t !== token);
+    res.status(200).json({ message: 'Usuario desconectado exitosamente' });
+});
