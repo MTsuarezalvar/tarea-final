@@ -42,3 +42,23 @@ router.delete('/:id', (req, res) => {
     presents.splice(presentIndex, 1);
     res.status(200).json({ message: 'Regalo eliminado exitosamente' });
 });
+
+// Modificar regalo
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, description, url, price } = req.body;
+    const { email } = req.user;
+    
+    const present = presents.find(present => present.id === parseInt(id) && present.userId === email);
+    if (!present) {
+        return res.status(404).json({ message: 'Regalo no encontrado o no pertenece al usuario' });
+    }
+    
+    // Actualizar los campos del regalo
+    if (name) present.name = name;
+    if (description) present.description = description;
+    if (url) present.url = url;
+    if (price) present.price = price;
+    
+    res.status(200).json({ message: 'Regalo modificado exitosamente', present });
+});
