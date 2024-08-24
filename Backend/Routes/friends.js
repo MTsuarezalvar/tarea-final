@@ -34,3 +34,17 @@ router.get('/', (req, res) => {
     const userFriends = friends.filter(friend => friend.userId === userEmail);
     res.status(200).json(userFriends);
 });
+
+// Eliminar amigo
+router.delete('/:email', (req, res) => {
+    const { email } = req.params;
+    const { email: userEmail } = req.user;
+    
+    const friendIndex = friends.findIndex(friend => friend.email === email && friend.userId === userEmail);
+    if (friendIndex === -1) {
+        return res.status(404).json({ message: 'Amigo no encontrado o no pertenece al usuario' });
+    }
+    
+    friends.splice(friendIndex, 1);
+    res.status(200).json({ message: 'Amigo eliminado exitosamente' });
+});
