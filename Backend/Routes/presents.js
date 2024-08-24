@@ -21,3 +21,10 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+// Listar regalos del usuario
+router.get('/', (req, res) => {
+    const { email } = req.user;
+    const userPresents = presents.filter(present => present.userId === email);
+    res.status(200).json(userPresents);
+});
