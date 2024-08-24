@@ -12,3 +12,6 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const presentRoutes = require('./Routes/presents');
 app.use('/presents', presentRoutes);
+
+const friendRoutes = require('./Routes/friends');
+app.use('/friends', friendRoutes);
