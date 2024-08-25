@@ -28,3 +28,5 @@ function App() {
 }
 
 export default App;
+
+<Route path="/edit-gift/:id" component={EditGift} />
