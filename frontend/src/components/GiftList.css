@@ -1,0 +1,19 @@
+.gift-list {
+    margin: 20px 0;
+  }
+  
+  .gift-list h2 {
+    color: #FF5722;
+  }
+  
+  .gift-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .gift-list li {
+    background: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }

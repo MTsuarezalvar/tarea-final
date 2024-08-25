@@ -30,3 +30,23 @@ function App() {
 export default App;
 
 <Route path="/edit-gift/:id" component={EditGift} />
+
+import React from 'react';
+import Header from './components/Header';
+import UserList from './components/UserList';
+import GiftList from './components/GiftList';
+import FriendList from './components/FriendList';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <UserList />
+      <GiftList />
+      <FriendList />
+    </div>
+  );
+}
+
+export default App;
