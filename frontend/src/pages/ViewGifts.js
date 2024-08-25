@@ -39,3 +39,18 @@ function ViewGifts() {
 }
 
 export default ViewGifts;
+
+const handleDelete = async (id) => {
+    const token = localStorage.getItem('token');
+    try {
+      await axios.delete(`/presents/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setGifts(gifts.filter(gift => gift.id !== id));
+      alert('Regalo eliminado con éxito');
+    } catch (error) {
+      console.error(error);
+      alert('Error al eliminar el regalo');
+    }
+  };
+  
